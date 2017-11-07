@@ -100,10 +100,10 @@ public class poker {
         int[] y = new int[54];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 27; j++) {
-                x[j * 2] = color[j];
-                y[j * 2] = number[j];
-                x[j * 2 + 1] = color[53 - j];
-                y[j * 2 + 1] = number[53 - j];
+                x[j * 2] = color[j+27];
+                y[j * 2] = number[j+27];
+                x[j * 2 + 1] = color[j];
+                y[j * 2 + 1] = number[j];
             }
             for (int j = 0; j < 54; j++) {
                 color[j] = x[j];
@@ -115,10 +115,12 @@ public class poker {
 
     public void wash2() {
         System.out.println("方法二：从后至前随机交换");
-        for (int i = 53; i >= 0; i--) {
+        for (int i = 53; i > 0; i--) {
             int c_color;
             int c_number;
-            int random = new Random().nextInt(53);
+            int random;
+            Random a = new Random();
+            random = a.nextInt(i);
             c_color = color[i];
             color[i] = color[random];
             color[random] = c_color;
